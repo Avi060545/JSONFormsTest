@@ -4,7 +4,7 @@ import {
   materialRenderers,
   materialCells,
 } from "@jsonforms/material-renderers";
-import CustomStepperRenderer from "./CustomStepperRenderer";
+import CustomStepperRenderer from "./Renderers/CustomStepperRenderer";
 
 const customRenderers = [
   ...materialRenderers,
@@ -19,6 +19,7 @@ function App() {
   const initialData = {};
   const [data, setData] = useState(initialData);
 
+  // Sending the options dynamically fetched from our backend/Database
   const propertyTypeBackendFormat = [
     {
       title: "Residential",
@@ -133,6 +134,8 @@ function App() {
       value: "4+bhk",
     },
   ];
+
+  // JSON Schema
   const test = {
     type: "object",
     properties: {
@@ -144,7 +147,7 @@ function App() {
         type: "object",
         title: "Property Sub Type",
       },
-      ///
+      /// Optional fields start here
       bhk: {
         type: "object",
         title: "BHK",
@@ -334,6 +337,8 @@ function App() {
     },
     required: ["propertyType"],
   };
+
+  // JSON UISchema
   const testui = {
     type: "Categorization",
     elements: [
